@@ -12,13 +12,13 @@ It is a daunting task to take screenshot of multiple websites. The screenshots o
 
 # Features
 
-[x] Takes URLs as input from text area.
+- Takes URLs as input from text area.
 
-[x] Takes URLs as input from text file
+- Takes URLs as input from text file
 
-[x] Can take Full or Partial Screenshot
+- Can take Full or Partial Screenshot
 
-[x] Users can also change the size of the screen by providing width and height
+- Users can also change the size of the screen by providing width and height
 
 # Note
 
@@ -33,7 +33,7 @@ url3
 
 # Tech Stack Used
 
-[x] Node Js
+- Node Js
 
-[x] Ejs templating engine
+- Ejs templating engine
 
