@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="./css/uikit.min.css">
+        <script src="https://kit.fontawesome.com/0ad2390a1e.js" crossorigin="anonymous"></script>
+        <script src="./js/uikit.min.js"></script>
+        <title>web-SS</title>
+    </head>
+    <body
+        style="font-family: 'Courier New', Courier, monospace;" class="uk-text-bolder">
+        <!-- card start -->
+        <div style="background: url(./image/blob1.png) right bottom no-repeat, url(./image/blob2.png) 300px 270px no-repeat ; " class="uk-card uk-card-default uk-card-hover uk-card-body uk-width-xlarge uk-align-center">
+            <div class="">
+                <h2>
+                    <i class="far fa-images"></i>
+                    web-SS</h2>
+            </div>
+            <% if(err_msg !== null) {%>
+                <div class="uk-alert-danger" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p><%= err_msg %></p>
+                </div>
+            <% } %>
+            <div class="uk-alert-success" style="display: none;" id="process_info" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p id="process_info_text">nothing to show here!!</p>
+            </div>
+            <form action="/process" method="POST" id="form_info">
+                <div>
+                    <textarea type="url" class="uk-textarea" id="urls_input" name="urls_input" rows="5" placeholder="enter url with every url on new line"></textarea>
+                </div>
+                <p class="uk-text-center">OR</p>
+                <div class="js-upload uk-placeholder uk-text-center">
+                    <span uk-icon="icon: cloud-upload"></span>
+                    <span class="uk-text-middle">Attach txt file by</span>
+                    <div uk-form-custom>
+                        <input type="file" id="file_input" name="file_input" accept=".txt">
+                        <input type="text" name="file_input_data" value="" hidden/>
+                        <span class="uk-link uk-label" id="file_name">selecting one</span>
+                    </div>
+                </div>
+                <hr/>
+                <div class="uk-padding-small">
+                    <label for="ss-type-select">Screenshot Type</label>
+                    &nbsp;&nbsp;
+                    <select class="uk-select uk-width-small" name="ss_type" id="ss-type-select">
+                        <option>Partial</option>
+                        <option>Full</option>
+                    </select>
+                </div>
+                <div class="uk-padding-small" id="set_viewport">
+                    <label for="custom_viewport">Custom Screen Size</label>
+                    &nbsp;&nbsp;
+                    <input min="0" title="width" style="height: 25px;" type="number" placeholder="w" name="view_width" class="uk-input uk-form-width-xsmall"/>
+                    X
+                    <input min="0" title="height" style="height: 25px;" type="number" placeholder="h" name="view_height" class="uk-input uk-form-width-xsmall"/>
+                </div>
+                <hr/>
+                <div class="uk-flex uk-flex-cente">
+                    <div class="uk-margin-left">
+                        <button class="uk-button uk-button-primary uk-width-small" id="process_form" title="Go">
+                            <i id="process_status" class="fas fa-check"></i>
+                        </button>
+                        <button class="uk-button uk-button-danger uk-width-small" id="reset_form" title="Go">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- card end -->
+
+        <!-- result start -->
+        <% if(progress_status!==null && progress_status=="done") {%>
+            <div style="background: url(./image/blob3.png) center no-repeat;" class="uk-card uk-card-default uk-card-hover uk-card-body uk-width-xlarge uk-align-center">
+                <div class="uk-alert-success" uk-alert>
+                    <p>file download here <a class="fas fa-download" onclick="showStat()" id="remove" href=<%= link %>></a></p>
+                </div>
+            <% } %>
+            <!-- result end -->
+            <script src="./js/utils.js"></script>
+        </body>
+    </body>
+</html>
